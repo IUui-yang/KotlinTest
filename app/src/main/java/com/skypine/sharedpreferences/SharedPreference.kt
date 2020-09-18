@@ -2,6 +2,11 @@ package com.skypine.sharedpreferences
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.net.Uri
+import android.provider.Settings.Secure.putInt
+import android.provider.Settings.Secure.putString
+import java.net.URI
+import androidx.core.content.edit as edit1
 
 /**
  * &lt;一句话功能简述&gt;
@@ -33,6 +38,11 @@ fun SharedPreferences.open(block: SharedPreferences.Editor.() -> Unit) {
 
 fun editorData(context: Context) {
     context.getSharedPreferences("data", Context.MODE_PRIVATE).open {
+        putString("name", "Tom")
+        putInt("age", 28)
+        putBoolean("married", false)
+    }
+    context.getSharedPreferences("data", Context.MODE_PRIVATE).edit1 {
         putString("name", "Tom")
         putInt("age", 28)
         putBoolean("married", false)
